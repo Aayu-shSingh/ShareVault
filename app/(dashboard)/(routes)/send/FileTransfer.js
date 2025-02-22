@@ -32,9 +32,9 @@ const FileTransfer = ({ roomCode, isSender }) => {
     };
 
     useEffect(() => {
-        socketRef.current = io('http://localhost:3001', {
+        socketRef.current = io(process.env.NEXT_PUBLIC_BACKEND_URL, {
             transports: ['websocket'],
-            upgrade: false
+            upgrade: false,
         });
 
         socketRef.current.on('connect', () => {
